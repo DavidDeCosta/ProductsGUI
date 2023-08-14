@@ -1,0 +1,34 @@
+How the program works
+
+Import necessary modules: Tkinter is used for creating the graphical user interface, pandas is used for data manipulation 
+(especially for handling the Excel file), and tkinter.font is used to configure the default font size.
+
+Initialize variables and define functions: An empty list form_data is initialized, which will later store all the data entered through 
+the form. The submit and export_to_excel functions are defined, as well as functions to create additional windows (Toplevel) for 
+selecting colors and sizes.
+
+Create the main Tkinter window: A new Tkinter window (root) is created, its geometry and title are set, and its columns 
+are configured. The default font size is also set here.
+
+Create input fields: A LabelFrame (a frame with a title) is created to hold the input fields. The fields are created with 
+pairs of Label and Entry widgets (or Text for the description), and laid out in the LabelFrame using the grid geometry manager.
+
+Create color and size selection buttons: Buttons are created that open new windows where the user can select multiple 
+colors and sizes. The selected options are stored in the color_vars and size_vars lists, which contain StringVar objects, 
+one for each possible color or size. The StringVar objects store either the color/size (if selected) or an empty string (if not selected).
+
+Create dropdown menus: Dropdown menus (technically OptionMenu widgets) are created for the default color and whether the 
+product is downloadable. The selected options are stored in StringVar objects (default_color_var and downloadable_var).
+
+Create submit and export buttons: Two buttons are created in another frame, one to submit the form and one to export the data. 
+When the submit button is clicked, the submit function collects the data from all input fields, stores it in a dictionary 
+(row_data), and appends the dictionary to form_data. The input fields are then cleared. When the export button is clicked, 
+the export_to_excel function opens the existing Excel file (or creates a new one if it doesn't exist), appends the new data 
+from form_data to the existing data, writes the data back to the Excel file, and clears form_data.
+
+Run the Tkinter event loop: Finally, the mainloop method of root is called to start the Tkinter event loop, 
+which waits for events (such as button clicks) and reacts to them.
+
+So the overall flow of the program is: user fills out form -> user clicks submit -> data is stored in 
+form_data and form is cleared -> user clicks export -> data is saved to Excel file and form_data is cleared. 
+This process can be repeated any number of times.
